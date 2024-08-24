@@ -13,12 +13,7 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
 });
 
-const corsOptions = {
-  origin: "*", // 一時的にすべてのオリジンを許可
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 app.use("/api/auth", authRoute);

@@ -12,7 +12,13 @@ const PORT = process.env.PORT || 10000;
 app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
 });
-app.use(cors());
+const corsOptions = {
+  origin: "https://sns-practice-client-lx0mxosdu-motoyas-projects.vercel.app",
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Pre-flight requests対応
+
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);

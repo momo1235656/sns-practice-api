@@ -11,7 +11,7 @@ router.post("/post", isAuthenticated, async (req, res) => {
   const { content } = req.body;
 
   if (!content) {
-    return res.status(400).json({ message: "投稿内容がありません。" });
+    return res.status(400).json({ message: "投稿内容がありません" });
   }
 
   try {

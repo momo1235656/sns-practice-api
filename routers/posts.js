@@ -31,6 +31,7 @@ router.post("/post", isAuthenticated, async (req, res) => {
 
     res.status(201).json(newPost);
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "サーバーエラーです。" });
   }
 });
@@ -50,9 +51,9 @@ router.get("/get_latest_post", async (req, res) => {
       },
     });
 
-    return res.status(201).json(latestPosts);
+    return res.json(latestPosts);
   } catch (err) {
-    console.error("Error fetching latest post:", err);
+    console.error(err);
     res.status(500).json({ message: "サーバーエラーです。" });
   }
 });
@@ -76,6 +77,7 @@ router.get("/:userId", async (req, res) => {
     return res.status(201).json(userPosts);
   } catch (err) {
     console.log(err);
+    res.status(500).json({ message: "サーバーエラーです。" });
   }
 });
 
